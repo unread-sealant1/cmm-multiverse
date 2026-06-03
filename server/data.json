@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "R-Ramz",
+    "desc": "A full-stack web application built with modern technologies.",
+    "tags": ["React", "Node", "Full-Stack"],
+    "live": "https://r-ramz.vercel.app/",
+    "image": "R-Ramz.png"
+  },
+  {
+    "id": 2,
+    "title": "Portfolio",
+    "desc": "Personal portfolio showcasing work, skills, and project experience.",
+    "tags": ["React", "Design", "Frontend"],
+    "live": "https://portfolio-lac-iota-76.vercel.app/",
+    "image": "Portfolio.png"
+  },
+  {
+    "id": 3,
+    "title": "Joe Black Adventures",
+    "desc": "An adventure and exploration platform built for storytelling and travel.",
+    "tags": ["Next.js", "Content", "Web"],
+    "live": "https://joeblackadventures.com/",
+    "image": "Joe.png"
+  }
+]
