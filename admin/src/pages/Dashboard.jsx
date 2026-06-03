@@ -14,7 +14,8 @@ const Dashboard = ({ user, onLogout }) => {
 
   const fetchProjects = async () => {
     try {
-      const res = await fetch("/api/admin/projects");
+      const API = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${API}/api/admin/projects`);
       const data = await res.json();
       setProjects(data);
     } catch {
@@ -51,7 +52,8 @@ const Dashboard = ({ user, onLogout }) => {
     const method = editing ? "PUT" : "POST";
 
     try {
-      const res = await fetch(url, {
+      const API = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${API}${url}`, {
         method,
         headers: { Authorization: `Bearer ${token}` },
         body: fd,
@@ -73,7 +75,8 @@ const Dashboard = ({ user, onLogout }) => {
       live: p.live || "",
       image: null,
     });
-    setPreview(p.image ? `/uploads/${p.image}` : "");
+    const API = import.meta.env.VITE_API_URL || "";
+    setPreview(p.image ? `${API}/uploads/${p.image}` : "");
     setEditing(p.id);
     setShowForm(true);
   };
@@ -82,7 +85,8 @@ const Dashboard = ({ user, onLogout }) => {
     if (!confirm("Delete this project?")) return;
     const token = localStorage.getItem("admin_token");
     try {
-      const res = await fetch(`/api/admin/projects/${id}`, {
+      const API = import.meta.env.VITE_API_URL || "";
+      const res = await fetch(`${API}/api/admin/projects/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -168,7 +172,7 @@ const Dashboard = ({ user, onLogout }) => {
             <div key={p.id} style={s.card}>
               <div style={{ display: "flex", gap: "16px", padding: "16px" }}>
                 {p.image && (
-                  <img src={`/uploads/${p.image}`} alt={p.title} style={{ width: "100px", height: "70px", objectFit: "cover", borderRadius: "10px", flexShrink: 0 }} />
+                  <img src={`${import.meta.env.VITE_API_URL || ""}/uploads/${p.image}`} alt={p.title} style={{ width: "100px", height: "70px", objectFit: "cover", borderRadius: "10px", flexShrink: 0 }} />
                 )}
                 <div style={{ flex: 1 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>

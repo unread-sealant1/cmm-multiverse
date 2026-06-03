@@ -7,7 +7,7 @@ const Projects = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/projects")
+    fetch(`${import.meta.env.VITE_API_URL || ""}/api/projects`)
       .then((r) => r.json())
       .then((data) => {
         setProjects(data);
@@ -58,7 +58,7 @@ const Projects = () => {
               >
                 <div className="h-48 overflow-hidden bg-white/5">
                   {p.image ? (
-                    <img src={`/uploads/${p.image}`} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={`${import.meta.env.VITE_API_URL || ""}/uploads/${p.image}`} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-4xl font-black text-white/10 select-none">
                       {p.title.split(" ")[0]}

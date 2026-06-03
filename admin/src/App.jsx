@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("admin_token");
     if (token) {
-      fetch("/api/admin/me", {
+      fetch(`${import.meta.env.VITE_API_URL || ""}/api/admin/me`, {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then((r) => (r.ok ? r.json() : null))
